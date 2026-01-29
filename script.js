@@ -456,3 +456,175 @@ if (window.performance) {
 //             .catch(error => console.log('SW registration failed:', error));
 //     });
 // }
+
+// ========================================
+// QR Code Generation & Management
+// ========================================
+
+let qrCodeInstance = null;
+
+function openQRPopup() {
+    const popup = document.getElementById('qrPopup');
+    popup.classList.add('active');
+    document.body.classList.add('qr-open');
+    
+    // Generate QR code if not already created
+    if (!qrCodeInstance) {
+        generateQRCode();
+    }
+}
+
+function closeQRPopup() {
+    const popup = document.getElementById('qrPopup');
+    popup.classList.remove('active');
+    document.body.classList.remove('qr-open');
+}
+
+function generateQRCode() {
+    const qrcodeContainer = document.getElementById('qrcode');
+    const websiteUrl = window.location.href;
+    
+    // Update URL display
+    document.getElementById('websiteUrl').textContent = websiteUrl;
+    
+    // Generate QR code
+    qrCodeInstance = new QRCode(qrcodeContainer, {
+        text: websiteUrl,
+        width: 256,
+        height: 256,
+        colorDark: "#0A4D92",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
+
+function downloadQR() {
+    const canvas = document.querySelector('#qrcode canvas');
+    if (canvas) {
+        const url = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'OMG-Technologies-QR-Code.png';
+        link.href = url;
+        link.click();
+    }
+}
+
+// Close QR popup when clicking outside
+document.addEventListener('click', (e) => {
+    const popup = document.getElementById('qrPopup');
+    if (e.target === popup) {
+        closeQRPopup();
+    }
+});
+
+// Close QR popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeQRPopup();
+    }
+});
+
+// ========================================
+// Enhanced Contact Form with EmailJS
+// ========================================
+
+// Update the existing contact form handler
+// Find the try block around line 90 and replace it with:
+
+/*
+INSTRUCTIONS FOR EMAILJS:
+
+1. Sign up at https://www.emailjs.com
+2. Get your Service ID, Template ID, and Public Key
+3. Replace the commented code below with:
+
+try {
+    await emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            category: data.category,
+            domain: data.domain,
+            message: data.message
+        },
+        'YOUR_PUBLIC_KEY'
+    );
+    
+    showFormMessage('success', 'Thank you for your enquiry! We will get back to you within 24 hours.');
+    contactForm.reset();
+} catch (error) {
+    showFormMessage('error', 'Sorry, there was an error sending your message. Please try again or contact us directly.');
+    console.error('EmailJS error:', error);
+}
+
+UNCOMMENT THE ABOVE AND REMOVE THE SIMULATION CODE
+*/
+
+// ========================================
+// WhatsApp Click Tracking (Optional Analytics)
+// ========================================
+
+const whatsappButton = document.querySelector('.whatsapp-float');
+if (whatsappButton) {
+    whatsappButton.addEventListener('click', () => {
+        console.log('WhatsApp button clicked');
+        // Add analytics tracking here if needed
+    });
+}
+
+// ========================================
+// Enhanced Mobile Experience
+// ========================================
+
+// Detect mobile device
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+    // Adjust floating button positions for mobile
+    const whatsappBtn = document.querySelector('.whatsapp-float');
+    const qrBtn = document.querySelector('.qr-float');
+    
+    if (whatsappBtn && qrBtn) {
+        // Add mobile-specific classes if needed
+        whatsappBtn.classList.add('mobile');
+        qrBtn.classList.add('mobile');
+    }
+}
+
+// ========================================
+// Scroll-triggered Animations Enhancement
+// ========================================
+
+// Add animation to domain cards when they come into view
+const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+            fadeInObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe all domain cards
+document.querySelectorAll('.domain-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeInObserver.observe(card);
+});
+
+console.log('🎉 OMG Technologies - All features loaded successfully!');
+console.log('📱 WhatsApp: Ready');
+console.log('📱 QR Code: Ready');
+console.log('📧 Contact Form: Ready (Setup EmailJS to receive emails)');

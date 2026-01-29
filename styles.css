@@ -1527,3 +1527,198 @@ section {
         font-size: 1.75rem;
     }
 }
+
+/* ========================================
+   NEW FEATURES - WhatsApp & QR Code
+   ======================================== */
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+    width: 35px;
+    height: 35px;
+}
+
+/* QR Code Floating Button */
+.qr-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.qr-float:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.qr-float svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* QR Code Popup */
+.qr-code-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.qr-code-popup.active {
+    display: flex;
+}
+
+.qr-popup-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.qr-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition-base);
+}
+
+.qr-close:hover {
+    background: var(--surface-hover);
+    color: var(--primary-blue);
+}
+
+.qr-popup-content h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.qr-popup-content > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.qr-code-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--border);
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.qr-code-container canvas {
+    display: block !important;
+}
+
+.qr-url {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    word-break: break-all;
+}
+
+/* Mobile Responsiveness for Floating Buttons */
+@media (max-width: 768px) {
+    .whatsapp-float,
+    .qr-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+    }
+    
+    .whatsapp-float {
+        right: 20px;
+    }
+    
+    .qr-float {
+        left: 20px;
+    }
+    
+    .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .qr-float svg {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .qr-popup-content {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Hide floating buttons when QR popup is open */
+body.qr-open .whatsapp-float,
+body.qr-open .qr-float {
+    display: none;
+}
