@@ -4,7 +4,7 @@
 
 // Initialize EmailJS (put your real public key here)
 emailjs.init({
-    publicKey: "YOUR_PUBLIC_KEY",   // ← Replace with your EmailJS Public Key
+    publicKey: "oletimahagoutham@gmail.com",   // ← Replace with your EmailJS Public Key
 });
 
 // Navigation functionality
