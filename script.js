@@ -2,6 +2,11 @@
 // OMG Technologies - Main JavaScript
 // ========================================
 
+// Initialize EmailJS (put your real public key here)
+emailjs.init({
+    publicKey: "YOUR_PUBLIC_KEY",   // ← Replace with your EmailJS Public Key
+});
+
 // Navigation functionality
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
@@ -27,25 +32,25 @@ hamburger.addEventListener('click', () => {
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
-        
+       
         // Only handle internal links
         if (href.startsWith('#')) {
             e.preventDefault();
-            
+           
             const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
-            
+           
             if (targetSection) {
                 // Close mobile menu if open
                 navMenu.classList.remove('active');
-                
+               
                 // Smooth scroll to section
                 const offsetTop = targetSection.offsetTop - 90;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
-                
+               
                 // Update active link
                 updateActiveLink(link);
             }
@@ -63,15 +68,14 @@ function updateActiveLink(activeLink) {
 
 // Highlight active section on scroll
 const sections = document.querySelectorAll('section[id]');
-
 window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
-    
+   
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
         const sectionTop = section.offsetTop - 100;
         const sectionId = section.getAttribute('id');
-        
+       
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
             if (correspondingLink) {
@@ -84,22 +88,19 @@ window.addEventListener('scroll', () => {
 // ========================================
 // Projects Filter Functionality
 // ========================================
-
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Update active button
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
-        
+       
         const filterValue = button.getAttribute('data-filter');
-        
-        // Filter projects with animation
+       
         projectCards.forEach((card, index) => {
             const category = card.getAttribute('data-category');
-            
+           
             if (filterValue === 'all' || category === filterValue) {
                 setTimeout(() => {
                     card.style.display = 'block';
@@ -125,51 +126,45 @@ projectCards.forEach(card => {
 });
 
 // ========================================
-// Contact Form Handling
+// Contact Form Handling - REAL EMAILJS INTEGRATION
 // ========================================
-
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+   
     // Get form data
     const formData = new FormData(contactForm);
     const data = Object.fromEntries(formData.entries());
-    
+   
     // Show loading state
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.innerHTML;
     submitButton.innerHTML = 'Sending...';
     submitButton.disabled = true;
-    
-    // Simulate form submission (replace with actual API call)
+   
     try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Show success message
+        // ── REAL EMAIL SEND ──
+        await emailjs.send(
+            'YOUR_SERVICE_ID',       // ← Replace with your Service ID
+            'YOUR_TEMPLATE_ID',      // ← Replace with your Template ID
+            {
+                name: data.name || 'Not provided',
+                email: data.email || 'Not provided',
+                phone: data.phone || 'Not provided',
+                category: data.category || 'Not selected',
+                domain: data.domain || 'Not selected',
+                message: data.message || 'No message'
+            }
+        );
+
         showFormMessage('success', 'Thank you for your enquiry! We will get back to you within 24 hours.');
-        
-        // Reset form
         contactForm.reset();
-        
-        // Log form data (for demonstration - replace with actual API call)
-        console.log('Form submitted:', data);
-        
-        // In production, replace the above with:
-        // const response = await fetch('YOUR_API_ENDPOINT', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // });
-        // const result = await response.json();
-        
+       
     } catch (error) {
-        // Show error message
         showFormMessage('error', 'Sorry, there was an error sending your message. Please try again or contact us directly.');
-        console.error('Form submission error:', error);
+        console.error('EmailJS submission failed:', error);
     } finally {
         // Reset button
         submitButton.innerHTML = originalButtonText;
@@ -180,7 +175,7 @@ contactForm.addEventListener('submit', async (e) => {
 function showFormMessage(type, message) {
     formMessage.className = `form-message ${type}`;
     formMessage.textContent = message;
-    
+   
     // Auto-hide after 5 seconds
     setTimeout(() => {
         formMessage.style.opacity = '0';
@@ -192,10 +187,8 @@ function showFormMessage(type, message) {
 }
 
 // ========================================
-// Scroll Animations
+// Scroll Animations (Intersection Observer)
 // ========================================
-
-// Intersection Observer for fade-in animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -210,7 +203,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all cards and sections
 const animateElements = document.querySelectorAll(`
     .feature-card,
     .domain-card,
@@ -233,7 +225,6 @@ animateElements.forEach(element => {
 // ========================================
 // Smooth Scroll to Top on Page Load
 // ========================================
-
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
 });
@@ -241,12 +232,11 @@ window.addEventListener('load', () => {
 // ========================================
 // Dynamic Statistics Counter
 // ========================================
-
 function animateCounter(element, target, duration = 2000) {
     const start = 0;
     const increment = target / (duration / 16);
     let current = start;
-    
+   
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -257,7 +247,6 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
-// Animate counters when hero section is visible
 const heroStats = document.querySelectorAll('.stat-number');
 let countersAnimated = false;
 
@@ -266,7 +255,7 @@ const heroObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting && !countersAnimated) {
             heroStats.forEach(stat => {
                 const text = stat.textContent;
-                const number = parseInt(text);
+                const number = parseInt(text.replace(/[^0-9]/g, '')) || 0;
                 animateCounter(stat, number, 2000);
             });
             countersAnimated = true;
@@ -275,39 +264,31 @@ const heroObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 const heroSection = document.querySelector('.hero');
-if (heroSection) {
-    heroObserver.observe(heroSection);
-}
+if (heroSection) heroObserver.observe(heroSection);
 
 // ========================================
 // Workshop Cards Hover Effect
 // ========================================
-
 const workshopCards = document.querySelectorAll('.workshop-card');
-
 workshopCards.forEach(card => {
     card.addEventListener('mouseenter', () => {
-        workshopCards.forEach(otherCard => {
-            if (otherCard !== card) {
-                otherCard.style.opacity = '0.7';
-            }
+        workshopCards.forEach(other => {
+            if (other !== card) other.style.opacity = '0.7';
         });
     });
-    
+   
     card.addEventListener('mouseleave', () => {
-        workshopCards.forEach(otherCard => {
-            otherCard.style.opacity = '1';
+        workshopCards.forEach(other => {
+            other.style.opacity = '1';
         });
     });
 });
 
 // ========================================
-// Lazy Loading Images (for future use)
+// Lazy Loading Images
 // ========================================
-
 function lazyLoadImages() {
     const images = document.querySelectorAll('img[data-src]');
-    
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -318,31 +299,25 @@ function lazyLoadImages() {
             }
         });
     });
-    
     images.forEach(img => imageObserver.observe(img));
 }
-
 lazyLoadImages();
 
 // ========================================
 // Parallax Effect for Hero Background
 // ========================================
-
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroBackground = document.querySelector('.hero-background');
-    
     if (heroBackground && scrolled < window.innerHeight) {
         heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
 });
 
 // ========================================
-// Form Field Validation
+// Basic Form Field Validation
 // ========================================
-
 const formInputs = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
-
 formInputs.forEach(input => {
     input.addEventListener('blur', () => {
         if (input.hasAttribute('required') && !input.value.trim()) {
@@ -351,31 +326,27 @@ formInputs.forEach(input => {
             input.style.borderColor = '';
         }
     });
-    
+   
     input.addEventListener('focus', () => {
         input.style.borderColor = '';
     });
 });
 
-// ========================================
-// Email and Phone Validation
-// ========================================
-
+// Email validation
 const emailInput = document.getElementById('email');
-const phoneInput = document.getElementById('phone');
-
 if (emailInput) {
     emailInput.addEventListener('blur', () => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(emailInput.value)) {
+        if (emailInput.value && !emailRegex.test(emailInput.value)) {
             emailInput.style.borderColor = '#ff0000';
         }
     });
 }
 
+// Phone input sanitization
+const phoneInput = document.getElementById('phone');
 if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
-        // Allow only numbers and common phone characters
         e.target.value = e.target.value.replace(/[^0-9+\-\s()]/g, '');
     });
 }
@@ -383,113 +354,79 @@ if (phoneInput) {
 // ========================================
 // Dynamic Year in Footer
 // ========================================
-
 const footerYear = document.querySelector('.footer-bottom p');
 if (footerYear) {
     const currentYear = new Date().getFullYear();
     footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
 }
 
-// ========================================
-// Prevent Default Form Submission on Enter
-// ========================================
-
+// Prevent Enter key submitting form except in textarea
 contactForm.addEventListener('keypress', (e) => {
     if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
     }
 });
 
-// ========================================
-// Add Loading Class to Body
-// ========================================
-
+// Add loading class + hero stagger animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    
-    // Add staggered animation to hero elements
+   
     const heroElements = document.querySelectorAll('.hero-badge, .hero-title, .hero-description, .hero-buttons, .hero-stats');
-    heroElements.forEach((element, index) => {
-        element.style.animationDelay = `${index * 0.2}s`;
+    heroElements.forEach((el, i) => {
+        el.style.animationDelay = `${i * 0.2}s`;
     });
 });
 
-// ========================================
-// Detect and Handle External Links
-// ========================================
-
+// Open external links in new tab
 document.querySelectorAll('a[href^="http"]').forEach(link => {
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener noreferrer');
 });
 
-// ========================================
-// Console Welcome Message
-// ========================================
-
+// Console welcome
 console.log('%c OMG Technologies ', 'background: linear-gradient(135deg, #0A4D92, #00D9FF); color: white; font-size: 24px; padding: 10px 20px; font-weight: bold;');
 console.log('%c Engineering • Innovation • Intelligence ', 'color: #0A4D92; font-size: 14px; font-weight: bold;');
 console.log('Website developed with ❤️ for innovation and education');
 
-// ========================================
-// Performance Monitoring (Development)
-// ========================================
-
+// Page load time (dev only)
 if (window.performance) {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            const perfData = window.performance.timing;
-            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`Page load time: ${pageLoadTime}ms`);
+            const perf = window.performance.timing;
+            const loadTime = perf.loadEventEnd - perf.navigationStart;
+            console.log(`Page load time: ${loadTime}ms`);
         }, 0);
     });
 }
 
-// ========================================
-// Service Worker Registration (for PWA - future enhancement)
-// ========================================
-
-// if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', () => {
-//         navigator.serviceWorker.register('/sw.js')
-//             .then(registration => console.log('SW registered:', registration))
-//             .catch(error => console.log('SW registration failed:', error));
-//     });
-// }
-
-// ========================================
-// QR Code Generation & Management
-// ========================================
-
+// QR Code Popup
 let qrCodeInstance = null;
 
 function openQRPopup() {
     const popup = document.getElementById('qrPopup');
+    if (!popup) return;
     popup.classList.add('active');
     document.body.classList.add('qr-open');
-    
-    // Generate QR code if not already created
-    if (!qrCodeInstance) {
-        generateQRCode();
-    }
+   
+    if (!qrCodeInstance) generateQRCode();
 }
 
 function closeQRPopup() {
     const popup = document.getElementById('qrPopup');
+    if (!popup) return;
     popup.classList.remove('active');
     document.body.classList.remove('qr-open');
 }
 
 function generateQRCode() {
-    const qrcodeContainer = document.getElementById('qrcode');
-    const websiteUrl = window.location.href;
-    
-    // Update URL display
-    document.getElementById('websiteUrl').textContent = websiteUrl;
-    
-    // Generate QR code
-    qrCodeInstance = new QRCode(qrcodeContainer, {
-        text: websiteUrl,
+    const container = document.getElementById('qrcode');
+    if (!container) return;
+   
+    const url = window.location.href;
+    document.getElementById('websiteUrl')?.textContent = url;
+   
+    qrCodeInstance = new QRCode(container, {
+        text: url,
         width: 256,
         height: 256,
         colorDark: "#0A4D92",
@@ -501,122 +438,36 @@ function generateQRCode() {
 function downloadQR() {
     const canvas = document.querySelector('#qrcode canvas');
     if (canvas) {
-        const url = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.download = 'OMG-Technologies-QR-Code.png';
-        link.href = url;
+        link.href = canvas.toDataURL('image/png');
         link.click();
     }
 }
 
-// Close QR popup when clicking outside
+// Close QR popup events
 document.addEventListener('click', (e) => {
     const popup = document.getElementById('qrPopup');
-    if (e.target === popup) {
-        closeQRPopup();
-    }
+    if (popup && e.target === popup) closeQRPopup();
 });
 
-// Close QR popup with Escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeQRPopup();
-    }
+    if (e.key === 'Escape') closeQRPopup();
 });
 
-// ========================================
-// Enhanced Contact Form with EmailJS
-// ========================================
-
-// Update the existing contact form handler
-// Find the try block around line 90 and replace it with:
-
-/*
-INSTRUCTIONS FOR EMAILJS:
-
-1. Sign up at https://www.emailjs.com
-2. Get your Service ID, Template ID, and Public Key
-3. Replace the commented code below with:
-
-try {
-    await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            category: data.category,
-            domain: data.domain,
-            message: data.message
-        },
-        'YOUR_PUBLIC_KEY'
-    );
-    
-    showFormMessage('success', 'Thank you for your enquiry! We will get back to you within 24 hours.');
-    contactForm.reset();
-} catch (error) {
-    showFormMessage('error', 'Sorry, there was an error sending your message. Please try again or contact us directly.');
-    console.error('EmailJS error:', error);
-}
-
-UNCOMMENT THE ABOVE AND REMOVE THE SIMULATION CODE
-*/
-
-// ========================================
-// WhatsApp Click Tracking (Optional Analytics)
-// ========================================
-
-const whatsappButton = document.querySelector('.whatsapp-float');
-if (whatsappButton) {
-    whatsappButton.addEventListener('click', () => {
-        console.log('WhatsApp button clicked');
-        // Add analytics tracking here if needed
-    });
-}
-
-// ========================================
-// Enhanced Mobile Experience
-// ========================================
-
-// Detect mobile device
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-if (isMobile) {
-    // Adjust floating button positions for mobile
-    const whatsappBtn = document.querySelector('.whatsapp-float');
-    const qrBtn = document.querySelector('.qr-float');
-    
-    if (whatsappBtn && qrBtn) {
-        // Add mobile-specific classes if needed
-        whatsappBtn.classList.add('mobile');
-        qrBtn.classList.add('mobile');
-    }
-}
-
-// ========================================
-// Scroll-triggered Animations Enhancement
-// ========================================
-
-// Add animation to domain cards when they come into view
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+// Extra domain cards staggered animation
 const fadeInObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach((entry, idx) => {
         if (entry.isIntersecting) {
             setTimeout(() => {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
+            }, idx * 100);
             fadeInObserver.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
-// Observe all domain cards
 document.querySelectorAll('.domain-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
@@ -625,6 +476,4 @@ document.querySelectorAll('.domain-card').forEach(card => {
 });
 
 console.log('🎉 OMG Technologies - All features loaded successfully!');
-console.log('📱 WhatsApp: Ready');
-console.log('📱 QR Code: Ready');
-console.log('📧 Contact Form: Ready (Setup EmailJS to receive emails)');
+console.log('📧 Contact Form: Now sending real emails via EmailJS');
