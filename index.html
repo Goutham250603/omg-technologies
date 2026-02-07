@@ -626,7 +626,7 @@
                             <span>EV Systems</span>
                         </div>
                         <div class="team-contact">
-                            <a href="/cdn-cgi/l/email-protection#1e71727b6a77737f767f79716b6a767f735e79737f7772307d7173">
+                            <a href="/cdn-cgi/l/email-protection#cea1a2abbaa7a3afa6afa9a1bbbaa6afa38ea9a3afa7a2e0ada1a3"><span class="__cf_email__" data-cfemail="9cf3f0f9e8f5f1fdf4fdfbf3e9e8f4fdf1dcfbf1fdf5f0b2fff3f1">[email&#160;protected]</span></a>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                     <polyline points="22,6 12,13 2,6"/>
@@ -798,7 +798,7 @@
                             </svg>
                         </div>
                         <h3>Email</h3>
-                        <a href="mailto:oletimahagoutham@gmail.com">oletimahagoutham@gmail.com</a>
+                        <a href="/cdn-cgi/l/email-protection#9ef1f2fbeaf7f3fff6fff9f1ebeaf6fff3def9f3fff7f2b0fdf1f3"><span class="__cf_email__" data-cfemail="7b14171e0f12161a131a1c140e0f131a163b1c161a121755181416">[email&#160;protected]</span></a>
                     </div>
 
                     <div class="contact-card">
@@ -944,7 +944,7 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
                             </svg>
-                            <a href="mailto:oletimahagoutham@gmail.com">oletimahagoutham@gmail.com</a>
+                            <a href="/cdn-cgi/l/email-protection#ef80838a9b86828e878e88809a9b878e82af88828e8683c18c8082"><span class="__cf_email__" data-cfemail="f39c9f96879a9e929b92949c86879b929eb3949e929a9fdd909c9e">[email&#160;protected]</span></a>
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1011,13 +1011,18 @@
     <!-- QR Code Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
-    <!-- EmailJS Library - ADD YOUR PUBLIC KEY -->
+    <!-- EmailJS Library - REQUIRED FOR EMAIL TO WORK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS - REPLACE WITH YOUR PUBLIC KEY
-        // emailjs.init('YOUR_PUBLIC_KEY_HERE');
+        // Initialize EmailJS with YOUR PUBLIC KEY
+        (function() {
+            emailjs.init('D2CE4ZpMM3yQrIp7aAA_3');
+            console.log('✅ EmailJS initialized successfully!');
+            console.log('📧 Emails will be sent to: oletimahagoutham@gmail.com');
+        })();
     </script>
     
+    <!-- Main JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
