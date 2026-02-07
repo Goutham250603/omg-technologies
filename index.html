@@ -1011,13 +1011,19 @@
     <!-- QR Code Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
-    <!-- EmailJS Library - ADD YOUR PUBLIC KEY -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<!-- EmailJS SDK - latest stable version -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Initialize EmailJS -->
     <script>
-        // Initialize EmailJS - REPLACE WITH YOUR PUBLIC KEY
-        // emailjs.init('YOUR_PUBLIC_KEY_HERE');
+        (function(){
+            emailjs.init({
+                publicKey: "D2CE4ZpMM3yQrIp7aAA_3"
+            });
+        })();
     </script>
-    
+
+    <!-- Your main JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
