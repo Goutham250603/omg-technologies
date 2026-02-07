@@ -1,0 +1,183 @@
+========================================
+📤 QUICK UPLOAD GUIDE
+========================================
+
+🎯 GOAL: Get your website live in 10 minutes!
+
+========================================
+STEP 1: EXTRACT FILES (1 minute)
+========================================
+
+1. Download the ZIP file
+2. Right-click → "Extract All" or "Unzip"
+3. You should see these files:
+   ✅ index.html
+   ✅ styles.css
+   ✅ script.js
+   ✅ logo.png
+   ✅ README.md
+   ✅ UPLOAD_GUIDE.txt
+
+========================================
+STEP 2: OPEN GITHUB (1 minute)
+========================================
+
+On Computer:
+1. Open browser
+2. Go to: https://github.com/Goutham250603/omg-technologies
+3. Login if needed
+
+On Mobile:
+1. Open GitHub app (or browser)
+2. Go to "omg-technologies" repository
+
+========================================
+STEP 3: DELETE OLD FILES (2 minutes)
+========================================
+
+IMPORTANT: Delete these old files first!
+
+1. Find "index.html" → Click → Click trash icon → Commit
+2. Find "styles.css" → Click → Click trash icon → Commit  
+3. Find "script.js" → Click → Click trash icon → Commit
+
+(If they don't exist, that's fine - skip this step)
+
+========================================
+STEP 4: UPLOAD NEW FILES (3 minutes)
+========================================
+
+1. Click "Add file" button (top right)
+2. Click "Upload files"
+3. Drag and drop these 4 files:
+   📄 index.html
+   📄 styles.css
+   📄 script.js
+   🖼️ logo.png
+
+4. Scroll down
+5. Click "Commit changes" button
+
+========================================
+STEP 5: ENABLE GITHUB PAGES (2 minutes)
+========================================
+
+1. Click "Settings" tab (top of repository)
+2. Click "Pages" (left sidebar)
+3. Under "Source":
+   - Select: "Deploy from a branch"
+   - Branch: "main"
+   - Folder: "/ (root)"
+4. Click "Save"
+
+You'll see: "Your site is ready to be published at..."
+
+========================================
+STEP 6: WAIT & VISIT (3-5 minutes)
+========================================
+
+1. Wait 3-5 minutes (GitHub is building your site)
+2. Go to: https://goutham250603.github.io/omg-technologies
+3. Press Ctrl+Shift+R to hard refresh
+
+🎉 YOUR WEBSITE IS LIVE!
+
+========================================
+STEP 7: ADD YOUR PHOTO (Optional, 2 min)
+========================================
+
+1. Take/choose your photo
+2. Rename to: "founder.jpg"
+3. Upload same way (Add file → Upload)
+4. Commit changes
+
+========================================
+✅ TESTING CHECKLIST:
+========================================
+
+Visit your website and test:
+
+□ Website loads properly
+□ Logo shows at top
+□ Navigation works
+□ WhatsApp button (green, bottom-right) opens WhatsApp
+□ Scroll through all sections
+□ Contact form - try sending yourself a test message
+□ Check your Gmail for the test email
+□ vCard QR code shows in contact section
+
+========================================
+📱 MOBILE UPLOAD INSTRUCTIONS:
+========================================
+
+Using Phone:
+
+1. Download ZIP on phone
+2. Use file manager to extract
+3. Open GitHub app (or browser)
+4. Go to repository
+5. Tap "+" → "Upload files"
+6. Select all 4 files
+7. Tap "Commit"
+
+========================================
+🆘 HELP - WEBSITE NOT SHOWING?
+========================================
+
+Problem: Page shows 404 error
+Solution: 
+- Check GitHub Pages is enabled
+- Wait 5 more minutes
+- Make sure files are in ROOT folder (not in subfolder)
+
+Problem: Old website still showing
+Solution:
+- Hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+- Clear browser cache
+- Try different browser
+
+Problem: Email not working
+Solution:
+- Open browser console (press F12)
+- Fill form and click Send
+- Check console for errors
+- Verify you have internet connection
+
+Problem: Logo not showing
+Solution:
+- Make sure file is named exactly: logo.png
+- Check it uploaded successfully
+- Hard refresh page
+
+========================================
+📧 YOUR EMAIL IS CONFIGURED!
+========================================
+
+EmailJS Keys Added:
+✅ Service ID: service_kv8tjde
+✅ Template ID: OmOR2GelI3vx0o5i8  
+✅ Public Key: D2CE4ZpMM3yQrIp7aAA_3
+
+Emails go to: oletimahagoutham@gmail.com
+
+When someone fills contact form → You get email!
+
+========================================
+🎉 CONGRATULATIONS!
+========================================
+
+Your website is now:
+✅ Professional
+✅ Mobile-responsive
+✅ Email-enabled
+✅ WhatsApp-integrated
+✅ Fully functional
+
+Share your link:
+🔗 https://goutham250603.github.io/omg-technologies
+
+📱 WhatsApp: +91 8309128506
+📧 Email: oletimahagoutham@gmail.com
+📍 Location: Hyderabad, Telangana
+
+========================================
