@@ -531,29 +531,37 @@ document.addEventListener('keydown', (e) => {
 // Update the existing contact form handler
 // Find the try block around line 90 and replace it with:
 
-// ✅ EmailJS Integration - LIVE AND WORKING!
+/*
+INSTRUCTIONS FOR EMAILJS:
+
+1. Sign up at https://www.emailjs.com
+2. Get your Service ID, Template ID, and Public Key
+3. Replace the commented code below with:
+
 try {
     await emailjs.send(
-        'service_kv8tjde',           // Your Service ID
-        'OmOR2GelI3vx0o5i8',         // Your Template ID
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
         {
-            to_email: 'oletimahagoutham@gmail.com',
             name: data.name,
             email: data.email,
             phone: data.phone,
-            interest: data.interest || data.category || data.domain || 'General Enquiry',
+            category: data.category,
+            domain: data.domain,
             message: data.message
         },
-        'D2CE4ZpMM3yQrIp7aAA_3'      // Your Public Key
+        'YOUR_PUBLIC_KEY'
     );
     
-    showFormMessage('success', '✅ Thank you! Your message has been sent. We will contact you within 24 hours.');
+    showFormMessage('success', 'Thank you for your enquiry! We will get back to you within 24 hours.');
     contactForm.reset();
-    console.log('✅ Email sent successfully to oletimahagoutham@gmail.com');
 } catch (error) {
-    showFormMessage('error', '❌ Sorry, there was an error. Please contact us directly at oletimahagoutham@gmail.com or +91 8309128506');
-    console.error('❌ EmailJS error:', error);
+    showFormMessage('error', 'Sorry, there was an error sending your message. Please try again or contact us directly.');
+    console.error('EmailJS error:', error);
 }
+
+UNCOMMENT THE ABOVE AND REMOVE THE SIMULATION CODE
+*/
 
 // ========================================
 // WhatsApp Click Tracking (Optional Analytics)
