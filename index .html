@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMG Technologies | Engineering • Innovation • Intelligence</title>
+<meta name="description" content="OMG Technologies trains students from idea to prototype, pilot deployment and research paper writing in Embedded Systems, IoT, Robotics, AI/ML, EV and Renewable Energy.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1628;--navy2:#0f2140;--blue:#2563eb;--cyan:#06b6d4;--gold:#f59e0b;
+  --text:#1e293b;--muted:#64748b;--light:#f1f5f9;--white:#fff;--border:#e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:90px 0}
+.tag{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:10px}
+.title{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--navy);margin-bottom:14px}
+.sub{color:var(--muted);max-width:640px;margin-bottom:46px}
+.center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:1px}
+.brand img{height:38px;width:38px;object-fit:contain;border-radius:8px;background:#fff;padding:2px}
+.brand small{display:block;font-size:.6rem;font-weight:500;letter-spacing:2px;color:#94a3b8}
+.links{display:flex;gap:26px;align-items:center}
+.links a{color:#cbd5e1;font-size:.9rem;font-weight:500;transition:.2s}
+.links a:hover{color:#fff}
+.btn{display:inline-block;padding:13px 28px;border-radius:10px;font-weight:600;font-size:.95rem;transition:.25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.35)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.nav-cta{padding:9px 20px!important;color:#fff!important}
+.burger{display:none;background:none;border:none;color:#fff;font-size:1.7rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;color:#fff;padding-top:110px;position:relative;overflow:hidden;
+  background:
+   radial-gradient(circle at 80% 20%,rgba(6,182,212,.25),transparent 45%),
+   radial-gradient(circle at 10% 90%,rgba(37,99,235,.35),transparent 45%),
+   linear-gradient(160deg,#050d1a 0%,#0a1628 50%,#0f2140 100%)}
+.hero::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(circle at 50% 40%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(circle at 50% 40%,#000 20%,transparent 75%)}
+.hero .container{position:relative;z-index:2}
+.pill{display:inline-block;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.4);color:#67e8f9;padding:7px 18px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:1px;margin-bottom:22px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:800;max-width:860px;margin-bottom:22px}
+.hero h1 span{background:linear-gradient(90deg,#60a5fa,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-logo{height:110px;width:auto;max-width:220px;object-fit:contain;background:#fff;border-radius:18px;padding:10px;margin-bottom:26px;box-shadow:0 12px 40px rgba(6,182,212,.25);display:block}
+.flow{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-family:'Poppins',sans-serif;font-weight:600;font-size:clamp(.95rem,2.2vw,1.25rem);color:#e2e8f0;margin-bottom:22px}
+.flow i{color:#22d3ee;font-style:normal}
+.hero p{font-size:1.12rem;color:#cbd5e1;max-width:680px;margin-bottom:34px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:760px}
+.stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:22px;backdrop-filter:blur(6px)}
+.stat b{font-family:'Poppins',sans-serif;font-size:2.2rem;display:block;color:#fff}
+.stat span{font-size:.85rem;color:#94a3b8}
+
+/* JOURNEY */
+.journey{background:var(--light)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+.step{background:#fff;border-radius:18px;padding:30px 24px;border:1px solid var(--border);position:relative;transition:.3s}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,33,64,.1)}
+.num{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:grid;place-items:center;font-weight:700;font-family:'Poppins',sans-serif;margin-bottom:18px}
+.step h3{font-size:1.1rem;color:var(--navy);margin-bottom:8px}
+.step p{font-size:.92rem;color:var(--muted)}
+.banner{margin-top:40px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:34px 38px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.banner h3{font-size:1.35rem;margin-bottom:6px}
+.banner p{color:#cbd5e1;max-width:640px}
+
+/* ABOUT */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:30px;transition:.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,33,64,.1);border-color:#bfdbfe}
+.ico{font-size:2rem;margin-bottom:14px}
+.card h3{font-size:1.1rem;color:var(--navy);margin-bottom:8px}
+.card p{color:var(--muted);font-size:.93rem}
+
+/* DOMAINS */
+.domains{background:var(--navy);color:#fff;background-image:radial-gradient(circle at 90% 10%,rgba(6,182,212,.18),transparent 40%)}
+.domains .title{color:#fff}.domains .sub{color:#94a3b8}.domains .tag{color:#67e8f9}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.dcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px;transition:.3s}
+.dcard:hover{background:rgba(255,255,255,.09);transform:translateY(-5px);border-color:rgba(6,182,212,.5)}
+.dcard h3{font-size:1.05rem;margin-bottom:8px}
+.dcard p{font-size:.88rem;color:#a8b4c6;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:.72rem;background:rgba(37,99,235,.25);color:#93c5fd;padding:4px 10px;border-radius:50px}
+
+/* WORKSHOPS */
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.wcard{border:1px solid var(--border);border-radius:18px;padding:28px;background:#fff;position:relative;display:flex;flex-direction:column;transition:.3s}
+.wcard:hover{box-shadow:0 18px 40px rgba(15,33,64,.1);transform:translateY(-6px)}
+.level{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:#eff6ff;padding:4px 12px;border-radius:50px;align-self:flex-start;margin-bottom:6px}
+.dur{font-size:.82rem;color:var(--muted);margin-bottom:12px}
+.wcard h3{font-size:1.1rem;color:var(--navy);margin-bottom:12px}
+.wcard li{font-size:.9rem;color:var(--muted);padding-left:22px;position:relative;margin-bottom:6px}
+.wcard li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.wcard .for{margin-top:auto;padding-top:16px;font-size:.84rem;font-weight:600;color:var(--navy);border-top:1px solid var(--border)}
+.wcard a.enq{color:var(--blue);font-weight:600;font-size:.9rem;display:inline-block;margin-top:10px}
+
+/* WHY */
+.why{background:var(--light)}
+.wgrid2{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-item{display:flex;gap:16px;background:#fff;border-radius:16px;padding:24px;border:1px solid var(--border)}
+.why-item b{font-family:'Poppins',sans-serif;font-size:1.5rem;color:#cbd5e1}
+.why-item h4{font-size:1rem;color:var(--navy);margin-bottom:4px}
+.why-item p{font-size:.88rem;color:var(--muted)}
+
+/* TEAM */
+.team{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:stretch}
+.founder{display:flex;gap:24px;align-items:center;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:34px}
+.avatar{width:130px;height:130px;flex-shrink:0;border-radius:50%;overflow:hidden;border:3px solid #22d3ee;box-shadow:0 8px 28px rgba(6,182,212,.35);background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;font-size:2rem;font-weight:700;font-family:'Poppins'}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+
+/* JOIN */
+.joinsec{background:var(--light)}
+.jgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start}
+.jinfo .card{margin-bottom:18px}
+.notice{background:#fffbeb;border:1.5px solid #fcd34d;border-radius:16px;padding:22px 24px;margin-bottom:18px}
+.notice h4{color:#92400e;font-size:1rem;margin-bottom:6px}
+.notice p{color:#78350f;font-size:.92rem}
+.jlist li{font-size:.92rem;color:var(--muted);padding-left:24px;position:relative;margin-bottom:8px}
+.jlist li::before{content:"✓";position:absolute;left:0;color:var(--cyan);font-weight:700}
+.jform{border:1px solid var(--border);box-shadow:0 18px 40px rgba(15,33,64,.08)}
+.jform .chk{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:var(--muted);margin-bottom:14px;font-weight:500}
+.jform .chk input{width:auto;margin:4px 0 0}
+.founder h3{font-size:1.3rem}
+.founder .role{color:#67e8f9;font-size:.88rem;margin-bottom:10px}
+.founder p{color:#cbd5e1;font-size:.92rem}
+.join{display:grid;gap:16px}
+.joinc{border:2px dashed #cbd5e1;border-radius:16px;padding:22px}
+.joinc h4{color:var(--navy);font-size:1rem}
+.joinc p{font-size:.88rem;color:var(--muted);margin-bottom:8px}
+.joinc a{color:var(--blue);font-weight:600;font-size:.88rem}
+
+/* CONTACT */
+.contact{background:var(--navy);color:#fff;background-image:radial-gradient(circle at 10% 10%,rgba(37,99,235,.25),transparent 45%)}
+.contact .title{color:#fff}.contact .sub{color:#94a3b8}.contact .tag{color:#67e8f9}
+.cgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px}
+.cinfo div{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 22px;margin-bottom:14px}
+.cinfo small{color:#67e8f9;font-weight:600;letter-spacing:1px;font-size:.72rem;text-transform:uppercase}
+.cinfo p{font-size:1rem}
+form{background:#fff;border-radius:20px;padding:30px;color:var(--text)}
+form label{font-size:.82rem;font-weight:600;color:var(--navy);display:block;margin-bottom:5px}
+form input,form select,form textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:inherit;font-size:.92rem;margin-bottom:14px;outline:none;transition:.2s}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--blue)}
+form .btn{width:100%}
+
+footer{background:#050d1a;color:#94a3b8;padding:36px 0;text-align:center;font-size:.88rem}
+footer b{color:#fff;font-family:'Poppins'}
+.wa{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:1.7rem;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:90;color:#fff}
+
+@media(max-width:960px){
+  .steps,.grid3,.dgrid,.wgrid,.wgrid2{grid-template-columns:1fr 1fr}
+  .team,.cgrid,.jgrid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  section{padding:64px 0}
+  .links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--navy);flex-direction:column;padding:20px;gap:16px}
+  .links.open{display:flex}
+  .burger{display:block}
+  .steps,.grid3,.dgrid,.wgrid,.wgrid2,.stats{grid-template-columns:1fr}
+  .founder{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-in">
+    <a href="#home" class="brand">
+      <div>OMG TECHNOLOGIES<small>ENGINEERING • INNOVATION • INTELLIGENCE</small></div>
+    </a>
+    <button class="burger" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <div class="links" onclick="this.classList.remove('open')">
+      <a href="#home">Home</a>
+      <a href="#journey">Idea to Paper</a>
+      <a href="#domains">Domains</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#team">Team</a>
+      <a href="#join">Join Us</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <img class="hero-logo" src="logo.png" alt="OMG Technologies logo" onerror="this.style.display='none'">
+    <h1>From <span>Ideas</span> to Engineering Solutions.</h1>
+    <div class="flow"><span>Research</span><i>•</i><span>Design</span><i>•</i><span>Develop</span><i>•</i><span>Prototype</span><i>•</i><span>Innovation</span></div>
+    <p>OMG Technologies empowers students and institutions with hands-on training in Embedded Systems, IoT, Robotics, AI/ML, EV Systems and Renewable Energy. We guide every student end to end, from the first idea to a working prototype, pilot deployment and research paper writing.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Invite Us to Your College</a>
+      <a href="#journey" class="btn btn-ghost">See Our Approach</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>10</b><span>Technology Domains</span></div>
+      <div class="stat"><b>0</b><span>Projects Done (We're just starting)</span></div>
+      <div class="stat"><b>4</b><span>Stages: Idea to Paper</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey" id="journey">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Our Approach</span>
+      <h2 class="title">We Train Students Till the Very End</h2>
+      <p class="sub">Most workshops stop at a certificate. We stay with students until their idea becomes a working prototype, a pilot deployment and a research paper.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Idea &amp; Problem Definition</h3><p>Identify real-world problems, finalize a feasible idea, and plan the architecture, components and timeline.</p></div>
+      <div class="step"><div class="num">2</div><h3>Prototype Development</h3><p>Hands-on hardware and software build with ESP32, Raspberry Pi, ROS, AI models and more, with mentor guidance at every step.</p></div>
+      <div class="step"><div class="num">3</div><h3>Pilot Deployment</h3><p>Test the prototype in a real environment such as a campus, lab, farm or small industry, and refine it using real data.</p></div>
+      <div class="step"><div class="num">4</div><h3>Research Paper Writing</h3><p>Structuring results, literature review, formatting and publication guidance for conferences and journals.</p></div>
+    </div>
+    <div class="banner">
+      <div>
+        <h3>Learn. Build. Deploy. Publish.</h3>
+        <p>Our goal is to help students create projects that are not just submitted, but showcased, deployed and published.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Start With Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Who We Are</span>
+      <h2 class="title">Bridging Academics and Industry</h2>
+      <p class="sub">OMG Technologies is a startup based in Hyderabad, dedicated to turning academic learning into real-world, industry-ready skills through training and project mentoring.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="ico">🎓</div><h3>Educational Excellence</h3><p>Structured programs for school, diploma, B.Tech and M.Tech students, designed with current industry requirements in mind.</p></div>
+      <div class="card"><div class="ico">🔧</div><h3>Hands-On Projects</h3><p>Real hardware, industry-standard tools and practical sessions, so students learn by building.</p></div>
+      <div class="card"><div class="ico">🚀</div><h3>Industry Collaboration</h3><p>Custom automation and control solutions for small industries, with students learning alongside real use cases.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section class="domains" id="domains">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Our Expertise</span>
+      <h2 class="title">Technology Domains</h2>
+      <p class="sub">Training and prototype guidance across 10 modern engineering domains.</p>
+    </div>
+    <div class="dgrid">
+      <div class="dcard"><h3>🔌 Embedded Systems</h3><p>Microcontroller programming, firmware and real-time systems.</p><div class="chips"><span>Raspberry Pi</span><span>Pico</span><span>Jetson Nano</span><span>ESP32</span><span>ESP8266</span></div></div>
+      <div class="dcard"><h3>🌐 Internet of Things</h3><p>Connected devices, sensor networks, cloud and mobile apps.</p><div class="chips"><span>MQTT</span><span>ThingSpeak</span><span>Blynk</span><span>Firebase</span></div></div>
+      <div class="dcard"><h3>🔋 Electric Vehicle Systems</h3><p>Battery management, motor controllers and smart dashboards.</p><div class="chips"><span>BMS</span><span>CAN Bus</span><span>Motor Control</span></div></div>
+      <div class="dcard"><h3>🤖 Robotics &amp; ROS</h3><p>Autonomous robots, path planning and robotic arm control.</p><div class="chips"><span>ROS2</span><span>SLAM</span><span>Navigation</span></div></div>
+      <div class="dcard"><h3>🚁 UAV &amp; Drones</h3><p>Drone design, flight controllers and autonomous missions.</p><div class="chips"><span>Pixhawk</span><span>GPS/IMU</span><span>Mission Planning</span></div></div>
+      <div class="dcard"><h3>👁️ Image Processing</h3><p>Object detection, recognition and real-time image analysis.</p><div class="chips"><span>OpenCV</span><span>YOLO</span><span>OCR</span></div></div>
+      <div class="dcard"><h3>🧠 Machine &amp; Deep Learning</h3><p>Model development, neural networks and predictive analytics.</p><div class="chips"><span>TensorFlow</span><span>PyTorch</span><span>Model Training</span></div></div>
+      <div class="dcard"><h3>🏭 Automation &amp; Control</h3><p>PLC programming, SCADA and process automation.</p><div class="chips"><span>PLC</span><span>SCADA</span><span>HMI</span></div></div>
+      <div class="dcard"><h3>☀️ Solar &amp; Renewable Energy</h3><p>Solar systems, energy monitoring and MPPT controllers.</p><div class="chips"><span>MPPT</span><span>Grid</span><span>Monitoring</span></div></div>
+      <div class="dcard"><h3>🗺️ GIS &amp; CAD Services</h3><p>Mapping, spatial analysis and engineering design.</p><div class="chips"><span>AutoCAD</span><span>QGIS</span><span>Civil 3D</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Learn With Us</span>
+      <h2 class="title">Workshops &amp; Training Programs</h2>
+      <p class="sub">Every program can be extended into a full project: prototype, pilot deployment and paper writing support.</p>
+    </div>
+    <div class="wgrid">
+      <div class="wcard"><span class="level">Beginner</span><div class="dur">2 Weeks</div><h3>Embedded Systems Fundamentals</h3><ul><li>Arduino &amp; ESP32 programming</li><li>Sensor integration</li><li>PCB design basics</li><li>5 mini projects</li></ul><div class="for">For: School &amp; Diploma Students</div><a class="enq" href="#contact">Enquire Now →</a></div>
+      <div class="wcard"><span class="level">Intermediate</span><div class="dur">4 Weeks</div><h3>IoT &amp; Cloud Integration</h3><ul><li>ESP32 / NodeMCU development</li><li>MQTT &amp; REST APIs</li><li>ThingSpeak / Blynk</li><li>Mobile app + major project</li></ul><div class="for">For: B.Tech Students</div><a class="enq" href="#contact">Enquire Now →</a></div>
+      <div class="wcard"><span class="level">Advanced</span><div class="dur">6 Weeks</div><h3>Robotics with ROS</h3><ul><li>ROS / ROS2 architecture</li><li>SLAM &amp; navigation</li><li>Computer vision integration</li><li>Autonomous robot project</li></ul><div class="for">For: B.Tech &amp; M.Tech Students</div><a class="enq" href="#contact">Enquire Now →</a></div>
+      <div class="wcard"><span class="level">Intermediate</span><div class="dur">3 Weeks</div><h3>Machine Learning for Engineers</h3><ul><li>Python for ML</li><li>Neural networks</li><li>Computer vision with OpenCV</li><li>Industry use cases</li></ul><div class="for">For: B.Tech &amp; Professionals</div><a class="enq" href="#contact">Enquire Now →</a></div>
+      <div class="wcard"><span class="level">Specialized</span><div class="dur">4 Weeks</div><h3>Electric Vehicle Systems</h3><ul><li>BMS design &amp; implementation</li><li>Motor controller programming</li><li>CAN Bus communication</li><li>Dashboard development</li></ul><div class="for">For: B.Tech &amp; M.Tech Students</div><a class="enq" href="#contact">Enquire Now →</a></div>
+      <div class="wcard"><span class="level">Advanced</span><div class="dur">5 Weeks</div><h3>Industrial Automation</h3><ul><li>PLC programming</li><li>SCADA development</li><li>HMI design</li><li>Process automation project</li></ul><div class="for">For: Industries &amp; Professionals</div><a class="enq" href="#contact">Enquire Now →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Our Advantage</span>
+      <h2 class="title">Why Colleges Choose OMG Technologies</h2>
+    </div>
+    <div class="wgrid2" style="margin-top:40px">
+      <div class="why-item"><b>01</b><div><h4>Idea to Paper Support</h4><p>Prototype, pilot deployment and research paper guidance in one program.</p></div></div>
+      <div class="why-item"><b>02</b><div><h4>Industry-Aligned Curriculum</h4><p>Skills matched to what employers and research labs need today.</p></div></div>
+      <div class="why-item"><b>03</b><div><h4>Hands-On Learning</h4><p>Real hardware kits and practical implementation in every session.</p></div></div>
+      <div class="why-item"><b>04</b><div><h4>Multi-Domain Expertise</h4><p>Ten domains under one roof, so one partner covers many departments.</p></div></div>
+      <div class="why-item"><b>05</b><div><h4>Affordable &amp; Flexible</h4><p>On-campus, online or custom programs at student-friendly pricing.</p></div></div>
+      <div class="why-item"><b>06</b><div><h4>Career Guidance</h4><p>Portfolio building, resume support and interview preparation.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Our Team</span>
+      <h2 class="title">Meet the Founder</h2>
+    </div>
+    <div class="team" style="margin-top:40px">
+      <div class="founder">
+        <div class="avatar"><img src="founder.jpg" alt="Oleti Maha Goutham, Founder of OMG Technologies" onerror="this.parentNode.textContent='OG'"></div>
+        <div>
+          <h3>Oleti Maha Goutham</h3>
+          <div class="role">Founder &amp; Lead Engineer</div>
+          <p>Passionate about empowering students with practical engineering skills and taking ideas all the way to prototypes, deployments and publications.</p>
+          <div class="chips" style="margin-top:12px"><span>Embedded Systems</span><span>IoT</span><span>Robotics</span><span>EV Systems</span></div>
+        </div>
+      </div>
+      <div class="join">
+        <div class="joinc"><h4>Part-Time Technical Trainer</h4><p>Join us in training the next generation of innovators, whenever a college engagement comes up.</p><a href="#join">Apply Now →</a></div>
+        <div class="joinc"><h4>Part-Time Project Engineer</h4><p>Help build prototypes and solutions for students and industries.</p><a href="#join">Apply Now →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="joinsec" id="join">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Join Our Team</span>
+      <h2 class="title">Work With Us as a Part-Time Trainer or Engineer</h2>
+      <p class="sub">Passionate about teaching and building? Join OMG Technologies as a part-time associate and grow with us while training students.</p>
+    </div>
+    <div class="jgrid">
+      <div class="jinfo">
+        <div class="notice">
+          <h4>⚠️ Please read before applying</h4>
+          <p>This is a <b>part-time, project-based</b> opportunity. Work is available <b>only when a college or institution engages us</b>. If there is no college engagement, there is no work at that time, and you may need to wait until the next one. Roles are not full-time and income is not fixed or guaranteed.</p>
+        </div>
+        <div class="card">
+          <h3>Who can apply</h3>
+          <ul class="jlist">
+            <li>Engineers, graduates and postgraduates in ECE, EEE, CSE, Mechanical or related fields</li>
+            <li>Working professionals and freelancers who want weekend or flexible work</li>
+            <li>Final-year students and researchers with strong practical skills</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Areas we need people in</h3>
+          <div class="chips" style="margin-top:6px">
+            <span style="background:#eff6ff;color:#1d4ed8">Embedded Systems</span><span style="background:#eff6ff;color:#1d4ed8">IoT</span><span style="background:#eff6ff;color:#1d4ed8">Robotics &amp; ROS</span><span style="background:#eff6ff;color:#1d4ed8">AI / ML</span><span style="background:#eff6ff;color:#1d4ed8">EV Systems</span><span style="background:#eff6ff;color:#1d4ed8">PLC / SCADA</span><span style="background:#eff6ff;color:#1d4ed8">Solar</span><span style="background:#eff6ff;color:#1d4ed8">Research Paper Writing</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>What you get</h3>
+          <ul class="jlist">
+            <li>Real teaching and mentoring experience at colleges</li>
+            <li>Learn and grow alongside students and the team</li>
+            <li>Flexible schedule, you choose which engagements to take</li>
+            <li>Remaining details such as roles, schedule and payment are discussed personally with the founder</li>
+          </ul>
+        </div>
+      </div>
+      <form id="joinForm" class="jform">
+        <label>Full Name *</label><input id="jn" required>
+        <label>Email *</label><input id="je" type="email" required>
+        <label>Phone / WhatsApp *</label><input id="jp" required>
+        <label>Applying For *</label>
+        <select id="jr" required>
+          <option value="">Select</option>
+          <option>Part-Time Technical Trainer</option>
+          <option>Part-Time Project Engineer</option>
+          <option>Research Paper Writing Mentor</option>
+          <option>Other</option>
+        </select>
+        <label>Your Expertise / Domain *</label><input id="jd" placeholder="e.g. IoT, ROS, Machine Learning" required>
+        <label>Qualification &amp; Experience *</label><textarea id="jx" rows="3" placeholder="Degree, years of experience, tools you know" required></textarea>
+        <label>LinkedIn / Portfolio (optional)</label><input id="jl">
+        <label class="chk"><input type="checkbox" id="jc" required> I understand this is part-time work, available only when a college engagement comes up, with no guaranteed work or fixed income.</label>
+        <button class="btn btn-primary" type="submit">Apply via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="center">
+      <span class="tag">Get In Touch</span>
+      <h2 class="title">Invite Us to Your Campus</h2>
+      <p class="sub">Colleges, faculty, student clubs and industries: tell us what you need and we'll respond with a plan.</p>
+    </div>
+    <div class="cgrid">
+      <div class="cinfo">
+        <div><small>Email</small><p><a href="mailto:oletimahagoutham@gmail.com">oletimahagoutham@gmail.com</a></p></div>
+        <div><small>Phone / WhatsApp</small><p><a href="tel:+918309128506">+91 83091 28506</a></p></div>
+        <div><small>Location</small><p>Hyderabad, Telangana, India</p></div>
+        <div><small>Response Time</small><p>Workshop enquiries within 24 hours · Proposals within 48 hours</p></div>
+      </div>
+      <form id="enq">
+        <label>Full Name *</label><input id="n" required>
+        <label>Email *</label><input id="e" type="email" required>
+        <label>Phone *</label><input id="p" required>
+        <label>Enquiry Type *</label>
+        <select id="t" required>
+          <option value="">Select</option>
+          <option>Workshop / Training</option>
+          <option>Idea to Prototype / Project Guidance</option>
+          <option>Research Paper Support</option>
+          <option>Corporate Training</option>
+          <option>Industry Collaboration</option>
+          <option>Other</option>
+        </select>
+        <label>Message *</label><textarea id="m" rows="4" required></textarea>
+        <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><b>OMG TECHNOLOGIES</b> · Engineering • Innovation • Intelligence</p>
+    <p style="margin-top:6px">Hyderabad, Telangana · oletimahagoutham@gmail.com · +91 83091 28506</p>
+    <p style="margin-top:6px">© 2026 OMG Technologies. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/918309128506?text=Hi%2C%20I%20want%20to%20know%20more%20about%20OMG%20Technologies" target="_blank" aria-label="WhatsApp">💬</a>
+
+<script>
+document.getElementById('enq').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  var t='Hi OMG Technologies,%0AName: '+encodeURIComponent(n.value)+'%0AEmail: '+encodeURIComponent(e.value)+'%0APhone: '+encodeURIComponent(p.value)+'%0AEnquiry: '+encodeURIComponent(document.getElementById('t').value)+'%0AMessage: '+encodeURIComponent(m.value);
+  window.open('https://wa.me/918309128506?text='+t,'_blank');
+});
+document.getElementById('joinForm').addEventListener('submit',function(ev){
+  ev.preventDefault();
+  var g=function(id){return encodeURIComponent(document.getElementById(id).value)};
+  var t='Hi OMG Technologies, I want to join as part-time.%0AName: '+g('jn')+'%0AEmail: '+g('je')+'%0APhone: '+g('jp')+'%0ARole: '+g('jr')+'%0AExpertise: '+g('jd')+'%0AExperience: '+g('jx')+'%0ALinkedIn/Portfolio: '+g('jl')+'%0AI understand work is available only when a college engagement comes up.';
+  window.open('https://wa.me/918309128506?text='+t,'_blank');
+});
+</script>
+</body>
+</html>
